@@ -1,8 +1,10 @@
-﻿namespace UserService.DAL.Entities
+﻿using AdminService.DAL.Filters;
+
+namespace UserService.DAL.Entities
 {
     public class OrderDetail
     {
-        //[SwaggerIgnore]
+        [SwaggerIgnore]
         public int id { get; set; }
         public string name { get; set; } = null!;
         public string studySection { get; set; } = null!;

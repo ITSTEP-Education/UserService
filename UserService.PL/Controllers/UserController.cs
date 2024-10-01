@@ -8,7 +8,8 @@ using UserService.BLL.Interfaces;
 namespace AdminService.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class UserController : ControllerBase
     {
         private readonly IOrderDetailService orderDetailService;
@@ -24,6 +25,7 @@ namespace AdminService.Controllers
 
         //=======================HttpRequest of entity OrderDetail=======================//
 
+        [MapToApiVersion("1.0")]
         [HttpGet("order-details/{name?}", Name = "GetOrderDetails")]
         [ProducesResponseType(typeof(IEnumerable<OrderDetail>), (int)HttpStatusCode.OK)]
         public ActionResult<IEnumerable<OrderDetail>> GetOrderDetail([FromRoute] string? name)
