@@ -1,4 +1,4 @@
-﻿using AdminService.DAL.Filters;
+﻿using UserService.DAL.Filters;
 
 namespace UserService.DAL.Entities
 {

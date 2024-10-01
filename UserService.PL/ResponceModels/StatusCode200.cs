@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdminService.DAL.Infrastructures
+namespace UserService.PL.Infrastructures
 {
     [NotMapped]
     public class StatusCode200 : StatusCode

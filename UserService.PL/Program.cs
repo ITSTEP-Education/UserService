@@ -1,7 +1,7 @@
-using AdminService.DAL.Filters;
-using AdminService.DAL.Repositories;
+using UserService.DAL.Filters;
+using UserService.DAL.Repositories;
 using Asp.Versioning;
-using AspNetWeb_Product.Swagger;
+using UserService.PL.Swagger;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<UserContext>(configure => configure.UseSqlServer(builder.Configuration.GetConnectionString("SmarterDbConnection")));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
+builder.Services.AddScoped<IClientDataService, ClientDataService>();
 builder.Services.AddControllers();
 
 //set for varsioning in Swagger;

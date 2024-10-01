@@ -1,4 +1,4 @@
-﻿namespace AdminService.DAL.Filters
+﻿namespace UserService.DAL.Filters
 {
     public class SwaggerIgnoreAttribute: Attribute
     {

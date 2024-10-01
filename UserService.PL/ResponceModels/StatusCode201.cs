@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdminService.DAL.Infrastructures
+namespace UserService.PL.Infrastructures
 {
     [NotMapped]
     public class StatusCode201 : StatusCode

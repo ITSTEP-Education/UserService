@@ -2,7 +2,7 @@
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 
-namespace AdminService.DAL.Filters
+namespace UserService.DAL.Filters
 {
     public class SwaggerSkipPropertyFilter : ISchemaFilter
     {

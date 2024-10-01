@@ -1,7 +1,7 @@
 ﻿using UserService.DAL.EF;
 using UserService.DAL.Entities;
 using UserService.DAL.Interfaces;
-using AdminService.DAL.Infrastructures;
+using UserService.DAL.Infrastructures;
 
 namespace UserService.DAL.Repositories
 {
@@ -25,5 +25,9 @@ namespace UserService.DAL.Repositories
             return orderDetails;
         }
 
+        public OrderDetail getItem(string name)
+        {
+            throw new NotImplementedException("blank method of IRepository<OrderDetail>");
+        }
     }
 }

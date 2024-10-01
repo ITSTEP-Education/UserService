@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdminService.DAL.Infrastructures
+namespace UserService.DAL.Infrastructures
 {
     [NotMapped]
     public class StatusCode400 : Exception

@@ -1,14 +1,14 @@
 ﻿using UserService.DAL.EF;
 using UserService.DAL.Entities;
 using UserService.DAL.Interfaces;
-using UserService.DAL.Repositories;
 
-namespace AdminService.DAL.Repositories
+namespace UserService.DAL.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
         private UserContext context;
         private OrderDetailRepository orderDetailRepository = null!;
+        private ClientDataRepository clientsDataRepository = null!;
 
         private bool disposed = false;
 
@@ -24,6 +24,16 @@ namespace AdminService.DAL.Repositories
                 if (orderDetailRepository == null)
                     orderDetailRepository = new OrderDetailRepository(context);
                 return orderDetailRepository;
+            }
+        }
+
+        public IRepository<ClientData> clientsData
+        {
+            get
+            {
+                if (clientsDataRepository == null)
+                    clientsDataRepository = new ClientDataRepository(context);
+                return clientsDataRepository;
             }
         }
 
