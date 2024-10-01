@@ -21,4 +21,8 @@
     <Folder Include="Infrastructures\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UserService.Model\UserService.Model.csproj" />
+  </ItemGroup>
+
 </Project>

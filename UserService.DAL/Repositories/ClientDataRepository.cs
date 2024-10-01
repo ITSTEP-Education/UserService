@@ -1,4 +1,5 @@
-﻿using UserService.DAL.EF;
+﻿using Microsoft.EntityFrameworkCore;
+using UserService.DAL.EF;
 using UserService.DAL.Entities;
 using UserService.DAL.Infrastructures;
 using UserService.DAL.Interfaces;
@@ -23,7 +24,9 @@ namespace UserService.DAL.Repositories
         {
             (string firstName, string lastName) = getFirstLastName(name);
 
-            ClientData? clientData = this.context.clientsData.FirstOrDefault(cd => (cd.firstName.Equals(firstName) && cd.lastName.Equals(lastName)));
+            var clientsData = context.clientsData.Include(c => c.clientOrder);
+            var clientData = clientsData.FirstOrDefault(cd => (cd.firstName.Equals(firstName) && cd.lastName.Equals(lastName)));
+
             if (clientData == null) throw new StatusCode404(name);
 
             return clientData;

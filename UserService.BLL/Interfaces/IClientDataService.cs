@@ -1,5 +1,6 @@
 ﻿using UserService.DAL.Entities;
 using UserService.DAL.Interfaces;
+using UserService.Model;
 
 namespace UserService.BLL.Interfaces
 {
@@ -7,7 +8,7 @@ namespace UserService.BLL.Interfaces
     {
         IUnitOfWork db { get; }
 
-        ClientData getClientData(string? name);
+        ClientCourseData getClientData(string? name);
 
         void Dispose();
     }

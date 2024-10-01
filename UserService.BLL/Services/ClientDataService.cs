@@ -1,6 +1,8 @@
-﻿using UserService.BLL.Interfaces;
-using UserService.DAL.Entities;
+﻿using UserService.BLL.BusisinesModel;
+using UserService.BLL.Interfaces;
+using UserService.DAL.Infrastructures;
 using UserService.DAL.Interfaces;
+using UserService.Model;
 
 namespace UserService.BLL.Services
 {
@@ -13,11 +15,24 @@ namespace UserService.BLL.Services
             this.db = db;
         }
 
-        public ClientData getClientData(string? name)
+        public ClientCourseData getClientData(string? name)
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));
 
-            return db.clientsData.getItem(name);
+            var clientData = db.clientsData.getItem(name);
+
+            if (clientData.clientOrder == null) throw new StatusCode404("ClientOrder");
+
+            var clientCourseData = new ClientCourseData() { 
+                userName = clientData.firstName + " " + clientData.lastName,
+                age = clientData.age,
+                phone = clientData.mobile,
+                typeEngeeniring = clientData.clientOrder.typeEngeeniring,
+                mounthPay = new MonthPayment(clientData.clientOrder.sumPay, clientData.clientOrder.timeStudy).getMountрPay(),
+                mounthQty = clientData.clientOrder.timeStudy,
+            };
+
+            return clientCourseData;
         }
 
         public void Dispose()

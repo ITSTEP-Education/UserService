@@ -6,6 +6,7 @@ using UserService.DAL.Entities;
 using UserService.BLL.Interfaces;
 using UserService.DAL.Infrastructures;
 using UserService.BLL.Services;
+using UserService.Model;
 
 namespace UserService.PL.Controllers
 {
@@ -60,7 +61,7 @@ namespace UserService.PL.Controllers
         [MapToApiVersion("1.0")]
         [HttpGet("client-data/{firstName}-{lastName}", Name = "GetClientData")]
         [ProducesResponseType(typeof(ClientData), (int)HttpStatusCode.OK)]
-        public ActionResult<ClientData> GetClientData([FromRoute] string firstName, string lastName)
+        public ActionResult<ClientCourseData> GetClientData([FromRoute] string firstName, string lastName)
         {
             try
             {
