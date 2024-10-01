@@ -5,7 +5,6 @@ using System.Net;
 using UserService.DAL.Entities;
 using UserService.BLL.Interfaces;
 using UserService.DAL.Infrastructures;
-using UserService.BLL.Services;
 using UserService.Model;
 
 namespace UserService.PL.Controllers
@@ -59,7 +58,7 @@ namespace UserService.PL.Controllers
 
         ///<include file='../DocXML/UserControllerDoc.xml' path='docs/members[@name="controller"]/GetClientData/*'/>
         [MapToApiVersion("1.0")]
-        [HttpGet("client-data/{firstName}-{lastName}", Name = "GetClientData")]
+        [HttpGet("client-data/{firstName}-{lastName}", Name = "GetClientCourseData")]
         [ProducesResponseType(typeof(ClientData), (int)HttpStatusCode.OK)]
         public ActionResult<ClientCourseData> GetClientData([FromRoute] string firstName, string lastName)
         {

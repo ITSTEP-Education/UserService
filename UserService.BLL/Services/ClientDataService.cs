@@ -27,6 +27,7 @@ namespace UserService.BLL.Services
                 userName = clientData.firstName + " " + clientData.lastName,
                 age = clientData.age,
                 phone = clientData.mobile,
+                productName = clientData.clientOrder.name,
                 typeEngeeniring = clientData.clientOrder.typeEngeeniring,
                 mounthPay = new MonthPayment(clientData.clientOrder.sumPay, clientData.clientOrder.timeStudy).getMountрPay(),
                 mounthQty = clientData.clientOrder.timeStudy,
