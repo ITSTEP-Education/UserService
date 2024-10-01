@@ -1,7 +1,7 @@
 ﻿using UserService.DAL.EF;
 using UserService.DAL.Entities;
 using UserService.DAL.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using AdminService.DAL.Infrastructures;
 
 namespace UserService.DAL.Repositories
 {
@@ -16,13 +16,11 @@ namespace UserService.DAL.Repositories
 
         public IEnumerable<OrderDetail> getItems(string name)
         {                  
-            //OrderDetail? orderDetail = this.context.orderDetails.FirstOrDefault(od => od.name.Equals(name.ToLower()));
-
             var orderDetails = (from order in this.context.orderDetails
                           where order.name == name.ToLower()
                           select order);
 
-            if (orderDetails == null || orderDetails.Count() == 0) throw new Exception("non records");
+            if (orderDetails == null || orderDetails.Count() == 0) throw new StatusCode404(name);
 
             return orderDetails;
         }

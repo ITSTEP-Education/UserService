@@ -4,6 +4,7 @@ using Asp.Versioning;
 using System.Net;
 using UserService.DAL.Entities;
 using UserService.BLL.Interfaces;
+using AdminService.DAL.Infrastructures;
 
 namespace AdminService.Controllers
 {
@@ -25,6 +26,7 @@ namespace AdminService.Controllers
 
         //=======================HttpRequest of entity OrderDetail=======================//
 
+        ///<include file='../DocXML/UserControllerDoc.xml' path='docs/members[@name="controller"]/GetOrderDetails/*'/>
         [MapToApiVersion("1.0")]
         [HttpGet("order-details/{name?}", Name = "GetOrderDetails")]
         [ProducesResponseType(typeof(IEnumerable<OrderDetail>), (int)HttpStatusCode.OK)]
@@ -38,9 +40,13 @@ namespace AdminService.Controllers
             {
                 return BadRequest(new { ex.ErrorCode, ex.Message, ex.Source });
             }
-            catch (Exception ex)
+            catch (StatusCode404 ex)
             {
-                return NotFound(new { code = 404, ex.Message, });
+                return NotFound(new { ex.code, ex.Message, ex.property });
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(new { code = 400, ex.Message, ex.ParamName });
             }
         }
     }

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<docs>
+    <members name="controller">
+		<GetOrderDetails>
+			<summary>
+				request to get list of entities OrderDetail by name
+			</summary>
+			<responce code="200">received list of OrderDetail</responce>
+			<responce code="400">Failed request: Argument null</responce>
+			<responce code="404">Failed request: Not found data</responce>
+			<responce code="409">Failed request: No connection to SqlDb carsdata</responce>
+		</GetOrderDetails>
+    </members>
+</docs>
