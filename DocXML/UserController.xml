@@ -4,15 +4,5 @@
         <name>UserService.PL</name>
     </assembly>
     <members>
-        <member name="M:UserService.PL.Controllers.UserController.GetOrderDetail(System.String)">
-            <summary>
-				request to get list of entities OrderDetail by name
-			</summary><responce code="200">received list of OrderDetail</responce><responce code="400">Failed request: Argument null</responce><responce code="404">Failed request: Not found data</responce><responce code="409">Failed request: No connection to SqlDb carsdata</responce>
-        </member>
-        <member name="M:UserService.PL.Controllers.UserController.GetClientData(System.String,System.String)">
-            <summary>
-				request to delete entity ClientData without entity dependecy ClientOrder
-			</summary><responce code="200">deleted ClientData from SQl DB</responce><responce code="400">Failed request: Argument is null</responce><responce code="404">Failed request: Not found data</responce><responce code="409">Failed request: No connection to SqlDb carsdata</responce>
-        </member>
     </members>
 </doc>
