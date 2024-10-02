@@ -57,14 +57,15 @@ builder.Services.AddEndpointsApiExplorer();
 //add CORS policy for permission treat request from other protocols and ports
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
-        configurePolicy: policy =>
-        {
-            policy.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-        });
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
 });
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -96,6 +97,10 @@ if (app.Environment.IsDevelopment())
             );
     });
 }
+
+app.UseCors("AllowAll");
+
+app.UseRouting();
 
 app.UseHttpsRedirection();
 

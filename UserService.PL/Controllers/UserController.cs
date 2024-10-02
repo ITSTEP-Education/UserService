@@ -6,9 +6,11 @@ using UserService.DAL.Entities;
 using UserService.BLL.Interfaces;
 using UserService.DAL.Infrastructures;
 using UserService.Model;
+using Microsoft.AspNetCore.Cors;
 
 namespace UserService.PL.Controllers
 {
+    [EnableCors("AllowAll")]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
@@ -30,7 +32,7 @@ namespace UserService.PL.Controllers
 
         //=======================HttpRequest of entity OrderDetail=======================//
 
-        ///<include file='../DocXML/UserControllerDoc.xml' path='docs/members[@name="controller"]/GetOrderDetails/*'/>
+        /////<include file='../DocXML/UserControllerDoc.xml' path='docs/members[@name="controller"]/GetOrderDetails/*'/>
         [MapToApiVersion("1.0")]
         [HttpGet("order-details/{name?}", Name = "GetOrderDetails")]
         [ProducesResponseType(typeof(IEnumerable<OrderDetail>), (int)HttpStatusCode.OK)]
@@ -56,7 +58,7 @@ namespace UserService.PL.Controllers
 
         //=======================HttpRequest of entity ClientData=======================//
 
-        ///<include file='../DocXML/UserControllerDoc.xml' path='docs/members[@name="controller"]/GetClientData/*'/>
+        /////<include file='../DocXML/UserControllerDoc.xml' path='docs/members[@name="controller"]/GetClientData/*'/>
         [MapToApiVersion("1.0")]
         [HttpGet("client-data/{firstName}-{lastName}", Name = "GetClientCourseData")]
         [ProducesResponseType(typeof(ClientData), (int)HttpStatusCode.OK)]
